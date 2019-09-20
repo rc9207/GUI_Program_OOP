@@ -7,18 +7,18 @@ import java.io.IOException;
 
 public class DashboardController {
 
-    @FXML
-    private Button addProductButton;
-    @FXML
-    private Button recordProductionButton;
+  @FXML
+  private Button addProductButton;
+  @FXML
+  private Button recordProductionButton;
 
-    public void addProductButtonPushed(ActionEvent event) throws IOException {
+  public void addProductButtonPushed(ActionEvent event) throws IOException {
 
-        System.out.println("Add Product button was pushed.");
-    }
+    System.out.println("Add Product button was pushed.");
+  }
 
-    public void recordProductionButtonPushed(ActionEvent event) throws IOException {
+  public void recordProductionButtonPushed(ActionEvent event) throws IOException {
 
-        System.out.println("Record Production button was pushed.");
-    }
+    System.out.println("Record Production button was pushed.");
+  }
 }

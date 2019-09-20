@@ -1,80 +1,78 @@
 .tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 1;
+  -fx-opacity: 1;
 }
 
-.tab-pane
-{
-    -fx-tab-min-width: 150px;
+.tab-pane {
+  -fx-tab-min-width: 150px;
 }
 
-.tab{
-    -fx-background-insets: 0 1 0 1,0,0;
-}
-.tab-pane .tab
-{
-    -fx-background-color: #e6e6e6;
+.tab {
+  -fx-background-insets: 0 1 0 1, 0, 0;
 }
 
-.tab-pane .tab:selected
-{
-    -fx-background-color: #3c3c3c;
+.tab-pane .tab {
+  -fx-background-color: #e6e6e6;
+}
+
+.tab-pane .tab:selected {
+  -fx-background-color: #3c3c3c;
 }
 
 .tab .tab-label {
-    -fx-alignment: CENTER;
-    -fx-text-fill: #828282;
-    -fx-font-family: "Roboto Light";
-    -fx-font-size: 16;
-    -fx-font-weight: bold;
+  -fx-alignment: CENTER;
+  -fx-text-fill: #828282;
+  -fx-font-family: "Roboto Light";
+  -fx-font-size: 16;
+  -fx-font-weight: bold;
 }
 
 .tab:selected .tab-label {
-    -fx-alignment: CENTER;
-    -fx-text-fill: #DDEDF4;
+  -fx-alignment: CENTER;
+  -fx-text-fill: #DDEDF4;
 }
 
 .label {
-    -fx-text-fill: #DDEDF4;
-    -fx-font-family: "Roboto Light";
-    -fx-font-size: 14;
-    -fx-font-weight: bold;
+  -fx-text-fill: #DDEDF4;
+  -fx-font-family: "Roboto Light";
+  -fx-font-size: 14;
+  -fx-font-weight: bold;
 }
 
 .button {
-    -fx-background-color: #1181B2;
-    -fx-font-family: "Roboto Light";
-    -fx-font-size: 14;
-    -fx-font-weight: bold;
-    -fx-text-fill: #DDEDF4;
+  -fx-background-color: #1181B2;
+  -fx-font-family: "Roboto Light";
+  -fx-font-size: 14;
+  -fx-font-weight: bold;
+  -fx-text-fill: #DDEDF4;
 }
 
 .table-view {
-    -fx-background-color: #828282;
+  -fx-background-color: #828282;
 }
 
-.table-view .column-header-background{
-    -fx-background-color: linear-gradient(#3c3c3c 0%, #828282 100%);
+.table-view .column-header-background {
+  -fx-background-color: linear-gradient(#3c3c3c 0%, #828282 100%);
 }
 
 .table-view .column-header-background .filler {
-    -fx-background-color: linear-gradient(#3c3c3c 0%, #828282 100%);
+  -fx-background-color: linear-gradient(#3c3c3c 0%, #828282 100%);
 }
 
-.table-view .column-header-background .label{
-    -fx-background-color: transparent;
-    -fx-text-fill: #DDEDF4;
+.table-view .column-header-background .label {
+  -fx-background-color: transparent;
+  -fx-text-fill: #DDEDF4;
 }
 
 .table-view .column-header {
-    -fx-background-color: transparent;
+  -fx-background-color: transparent;
 }
 
 .list-view {
-    -fx-background-color: #828282;
+  -fx-background-color: #828282;
 }
 
 .text-area {
-    -fx-background-color: #828282;
+  -fx-background-color: #828282;
 }
 
 
