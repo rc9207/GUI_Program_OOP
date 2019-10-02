@@ -1,5 +1,11 @@
 package application;
 
+/**
+ * Tableview methods for Product Object.
+ *
+ * @author Seth T. Graham
+ */
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

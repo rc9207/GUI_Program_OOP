@@ -1,5 +1,11 @@
 package application;
 
+/**
+ * Methods for Dashboard JavaFX.
+ *
+ * @author Seth T. Graham
+ */
+
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,5 +1,10 @@
-
 package application;
+
+/**
+ * Driver class to start JavaFX Application.
+ *
+ * @author Seth T. Graham
+ */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
