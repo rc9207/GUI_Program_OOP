@@ -1,3 +1,7 @@
+/**
+@author Seth T. Graham
+ */
+
 .tab-pane .tab-header-area .tab-header-background {
   -fx-opacity: 1;
 }
@@ -71,8 +75,32 @@
   -fx-background-color: #828282;
 }
 
+.text-field {
+  -fx-font-family: "Roboto Light";
+  -fx-font-size: 14;
+  -fx-font-weight: bold;
+  -fx-text-fill: #3c3c3c;
+}
+
 .text-area {
   -fx-background-color: #828282;
 }
+
+.choice-box .context-menu {
+  -fx-background-color: #1181B2;
+}
+
+.choice-box > .label {
+  -fx-text-fill: #3c3c3c;
+}
+
+.combo-box {
+  -fx-font-family: "Roboto Light";
+  -fx-font-size: 14;
+  -fx-font-weight: bold;
+}
+
+
+
 
 

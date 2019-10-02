@@ -12,12 +12,14 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
 
-    Parent root = FXMLLoader.load(getClass().getResource("/Dashboard.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("/application/Dashboard.fxml"));
     Scene scene = new Scene(root);
     primaryStage.setTitle("Product Tracker");
     primaryStage.setScene(scene);
-    scene.getStylesheets().add(getClass().getResource("/DashboardStyle.css").toExternalForm());
+    scene.getStylesheets()
+        .add(getClass().getResource("/application/DashboardStyle.css").toExternalForm());
     primaryStage.show();
+    primaryStage.setResizable(false);
 
   }
 
