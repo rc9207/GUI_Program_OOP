@@ -7,6 +7,7 @@ package application;
  */
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,8 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class DashboardController {
 
-  private ObservableList choiceBoxList = FXCollections.observableArrayList("Audio", "Visual",
-      "Audio Mobile", "Visual Mobile");
+  private ItemType itemType;
 
   private ObservableList comboBoxList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6,
       7, 8, 9, 10);
@@ -36,7 +36,7 @@ public class DashboardController {
   @FXML
   private TextField manufacturer;
   @FXML
-  private ChoiceBox<String> choiceBoxType;
+  private ChoiceBox<ItemType> choiceBoxType;
   @FXML
   private ComboBox<Integer> comboBoxQuantity;
   @FXML
@@ -58,7 +58,7 @@ public class DashboardController {
   @FXML
   private void initialize() throws Exception {
 
-    choiceBoxType.setItems(choiceBoxList);
+    choiceBoxType.setItems(FXCollections.observableArrayList(itemType.values()));
 
     comboBoxQuantity.setItems(comboBoxList);
     comboBoxQuantity.setEditable(true);
@@ -80,12 +80,18 @@ public class DashboardController {
    * @throws IOException Throw exception if needed.
    */
   public void addProductButtonPushed(ActionEvent event) throws Exception {
+
     String productNameString = productName.getText();
     String manufacturerString = manufacturer.getText();
-    String typeString = choiceBoxType.getValue();
+    String typeString = choiceBoxType.getValue().getType();
+
+    System.out.println(typeString);
 
     ResourceMethods rm = new ResourceMethods();
     rm.addProduct(productNameString, manufacturerString, typeString);
+
+    productName.clear();
+    manufacturer.clear();
     initialize();
   }
 
