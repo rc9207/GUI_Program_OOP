@@ -2,12 +2,12 @@ package application;
 
 public enum ItemType {
 
-  Audio("AU"), Visual("VI"), Audio_Mobile("AM"), Visual_Mobile("VM");
+  AUDIO("AU"), VISUAL("VI"), AUDIO_MOBILE("AM"), VISUAL_MOBILE("VM");
 
   private final String type;
 
   /**
-   * Private constructor for ItemType Enum.
+   * Constructor for ItemType Enum.
    *
    * @param type Alternate meaning for Enum.
    */

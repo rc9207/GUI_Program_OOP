@@ -99,6 +99,16 @@ public class ProductTable {
   public String getType() {
     return type.get();
   }
+
+  @Override
+  public String toString() {
+    String info;
+
+    info = "Product ID: " + getId() + "\t\tProduct Name: " + getName() + "\t\tManufacturer: "
+        + getManufacturer() + "\t\tType: " + getType();
+
+    return info;
+  }
 }
 
 

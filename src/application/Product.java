@@ -5,7 +5,7 @@ public abstract class Product implements Item {
   private int id;
   private String name;
   private String manufacturer;
-  private String type;
+  private ItemType type;
 
   /**
    * Constructor for Product with two arguments.
@@ -25,7 +25,7 @@ public abstract class Product implements Item {
    * @param manufacturer Field is located locally.
    * @param type Field is located locally.
    */
-  public Product(String name, String manufacturer, String type) {
+  public Product(String name, String manufacturer, ItemType type) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
@@ -90,7 +90,7 @@ public abstract class Product implements Item {
    *
    * @param type Int argument.
    */
-  public void setType(String type) {
+  public void setType(ItemType type) {
     this.type = type;
   }
 
@@ -99,7 +99,7 @@ public abstract class Product implements Item {
    *
    * @return String value of type field.
    */
-  public String getType() {
+  public ItemType getType() {
     return type;
   }
 
@@ -108,6 +108,7 @@ public abstract class Product implements Item {
    *
    * @return String describing this object.
    */
+  @Override
   public String toString() {
     String info = "Name: " + name + "\nManufacturer: " + manufacturer + "\nType: " + type;
 

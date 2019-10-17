@@ -1,6 +1,6 @@
 package application;
 
-public class AudioPlayer extends Product {
+public class AudioPlayer extends Product implements MultiMediaControl {
 
   private String audioSpecification;
   private String mediaType;
@@ -18,18 +18,34 @@ public class AudioPlayer extends Product {
   }
 
   /**
+   * Constructor with four arguments, Uses Product parent.
+   *
+   * @param name Field located in Parent.java.
+   * @param manufacturer Field located in Parent.java.
+   * @param audioSpecification Field located locally.
+   * @param mediaType Field located locally.
+   */
+  public AudioPlayer(String name, String manufacturer, String audioSpecification,
+      String mediaType) {
+
+    super(name, manufacturer);
+    this.audioSpecification = audioSpecification;
+    this.mediaType = mediaType;
+  }
+
+  /**
    * Constructor with 5 arguments.
    *
    * @param name               Field located in Parent.java
    * @param manufacturer       Field located in Parent.java
-   * @param type               Field located in Parent.java
+   * @param itemType           Desired ItemType for AudioPlayer.
    * @param audioSpecification Field is located locally.
    * @param mediaType          Field is located locally.
    */
-  public AudioPlayer(String name, String manufacturer, String type, String audioSpecification,
+  public AudioPlayer(String name, String manufacturer, ItemType itemType, String audioSpecification,
       String mediaType) {
 
-    super(name, manufacturer, type);
+    super(name, manufacturer, itemType);
     this.audioSpecification = audioSpecification;
     this.mediaType = mediaType;
   }
@@ -79,14 +95,14 @@ public class AudioPlayer extends Product {
    * Method to go to previous track.
    */
   public void previous() {
-    System.out.println("Going back...");
+    System.out.println("Previous...");
   }
 
   /**
    * Method to go to next track.
    */
   public void next() {
-    System.out.println("Going forward...");
+    System.out.println("Next...");
   }
 
   /**
@@ -94,9 +110,11 @@ public class AudioPlayer extends Product {
    *
    * @return String representation of AudioPlayer object.
    */
+  @Override
   public String toString() {
     String info = "Name: " + getName() + "\nManufacturer: " + getManufacturer() + "\nType: "
-        + getType() + "\nAudio Specs: " + audioSpecification + "\nMedia Type: " + mediaType;
+        + super.getType() + "\nSupported Audio Formats: " + audioSpecification
+        + "\nSupported Playlist Formats: " + mediaType;
 
     return info;
   }

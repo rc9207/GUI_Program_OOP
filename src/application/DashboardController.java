@@ -7,7 +7,6 @@ package application;
  */
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,6 +23,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class DashboardController {
 
   private ItemType itemType;
+  private AudioPlayer audioPlayer;
+  private MoviePlayer moviePlayer;
 
   private ObservableList comboBoxList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6,
       7, 8, 9, 10);
@@ -49,6 +51,8 @@ public class DashboardController {
   private TableColumn<ProductTable, String> colMan;
   @FXML
   private TableColumn<ProductTable, String> colType;
+  @FXML
+  private ListView<ProductTable> listView;
 
   /**
    * Generate data upon loading of Dashboard.fxml
@@ -71,6 +75,10 @@ public class DashboardController {
 
     ObservableList<ProductTable> productList = ResourceMethods.getProducts();
     tableView.setItems(productList);
+
+    listView.setItems(productList);
+
+
   }
 
   /**
@@ -84,8 +92,6 @@ public class DashboardController {
     String productNameString = productName.getText();
     String manufacturerString = manufacturer.getText();
     String typeString = choiceBoxType.getValue().getType();
-
-    System.out.println(typeString);
 
     ResourceMethods rm = new ResourceMethods();
     rm.addProduct(productNameString, manufacturerString, typeString);
