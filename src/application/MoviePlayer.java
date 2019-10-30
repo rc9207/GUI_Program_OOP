@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Class used to describe and create an new MoviePlayer object.
+ *
+ * @Author: Seth T. Graham
+ */
 public class MoviePlayer extends Product implements MultiMediaControl {
 
   private Screen screen;
@@ -9,11 +14,11 @@ public class MoviePlayer extends Product implements MultiMediaControl {
   /**
    * Constructor with 5 arguments.
    *
-   * @param name String value of the product name.
+   * @param name         String value of the product name.
    * @param manufacturer String value of the manufacturer.
-   * @param screen Name of the Screen object.
-   * @param monitorType Name of the monitorType Enum.
-   * @param itemType Name of the itemType Enum.
+   * @param screen       Name of the Screen object.
+   * @param monitorType  Name of the monitorType Enum.
+   * @param itemType     Name of the itemType Enum.
    */
   public MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType,
       ItemType itemType) {

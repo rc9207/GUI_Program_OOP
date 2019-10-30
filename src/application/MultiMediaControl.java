@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Interface used to set actions for AudioPlayers and MoviePlayers.
+ *
+ * @Author: Seth T. Graham
+ */
 public interface MultiMediaControl {
 
   /**

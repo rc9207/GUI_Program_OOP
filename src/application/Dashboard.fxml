@@ -19,44 +19,60 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="250.0" prefHeight="829.0" prefWidth="1068.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="150.0" tabMaxWidth="150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="250.0"
+  prefHeight="829.0" prefWidth="1068.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="150.0"
+  tabMaxWidth="150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="application.DashboardController">
 
   <stylesheets>
-    <URL value="@DashboardStyle.css" />
+    <URL value="@DashboardStyle.css"/>
   </stylesheets>
 
   <tabs>
     <Tab text="Product Line">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c3c3c;" stylesheets="@DashboardStyle.css">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+          style="-fx-background-color: #3c3c3c;" stylesheets="@DashboardStyle.css">
           <children>
-            <GridPane layoutY="18.0" prefHeight="88.0" prefWidth="378.0" stylesheets="@DashboardStyle.css">
+            <GridPane layoutY="18.0" prefHeight="88.0" prefWidth="378.0"
+              stylesheets="@DashboardStyle.css">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
               </rowConstraints>
               <children>
-                <Label stylesheets="@DashboardStyle.css" text="Product Name:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                <TextField fx:id="productName" prefHeight="25.0" prefWidth="108.0" stylesheets="@DashboardStyle.css" GridPane.columnIndex="1" />
-                <Label nodeOrientation="LEFT_TO_RIGHT" stylesheets="@DashboardStyle.css" text="Manufacturer:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                <Label stylesheets="@DashboardStyle.css" text="Type:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                <TextField fx:id="manufacturer" stylesheets="@DashboardStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <ChoiceBox fx:id="choiceBoxType" prefHeight="30.0" prefWidth="195.0" stylesheets="@DashboardStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label stylesheets="@DashboardStyle.css" text="Product Name:"
+                  GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                <TextField fx:id="productName" prefHeight="25.0" prefWidth="108.0"
+                  stylesheets="@DashboardStyle.css" GridPane.columnIndex="1"/>
+                <Label nodeOrientation="LEFT_TO_RIGHT" stylesheets="@DashboardStyle.css"
+                  text="Manufacturer:" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                  GridPane.valignment="CENTER"/>
+                <Label stylesheets="@DashboardStyle.css" text="Type:" GridPane.halignment="CENTER"
+                  GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+                <TextField fx:id="manufacturer" stylesheets="@DashboardStyle.css"
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <ChoiceBox fx:id="choiceBoxType" prefHeight="30.0" prefWidth="195.0"
+                  stylesheets="@DashboardStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
               </children>
             </GridPane>
-            <Button fx:id="addProductButton" layoutX="437.0" layoutY="76.0" mnemonicParsing="false" onAction="#addProductButtonPushed" prefHeight="25.0" prefWidth="104.0" text="Add Product" />
-            <Label layoutY="134.0" stylesheets="@DashboardStyle.css" text="Existing Products" />
-            <TableView fx:id="tableView" layoutX="-3.0" layoutY="160.0" minHeight="652.0" minWidth="1000.0" prefHeight="652.0" prefWidth="1092.0" stylesheets="@DashboardStyle.css">
+            <Button fx:id="addProductButton" layoutX="437.0" layoutY="76.0" mnemonicParsing="false"
+              onAction="#addProductButtonPushed" prefHeight="25.0" prefWidth="104.0"
+              text="Add Product"/>
+            <Label layoutY="134.0" stylesheets="@DashboardStyle.css" text="Existing Products"/>
+            <TableView fx:id="tableView" layoutX="-3.0" layoutY="160.0" minHeight="652.0"
+              minWidth="1000.0" prefHeight="652.0" prefWidth="1092.0"
+              stylesheets="@DashboardStyle.css">
               <columns>
-                <TableColumn fx:id="colId" prefWidth="73.0" text="Id" />
-                <TableColumn fx:id="colName" prefWidth="153.0" text="Name" />
-                <TableColumn fx:id="colMan" prefWidth="172.0" text="Manufacturer" />
-                <TableColumn fx:id="colType" prefWidth="157.0" text="Type" />
+                <TableColumn fx:id="colId" prefWidth="73.0" text="Id"/>
+                <TableColumn fx:id="colName" prefWidth="153.0" text="Name"/>
+                <TableColumn fx:id="colMan" prefWidth="172.0" text="Manufacturer"/>
+                <TableColumn fx:id="colType" prefWidth="157.0" text="Type"/>
               </columns>
             </TableView>
           </children>
@@ -65,22 +81,27 @@
     </Tab>
     <Tab text="Produce">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c3c3c;" stylesheets="@DashboardStyle.css">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+          style="-fx-background-color: #3c3c3c;" stylesheets="@DashboardStyle.css">
           <children>
-            <Label layoutX="28.0" layoutY="111.0" text="Choose Product" />
-            <ListView fx:id="listView" layoutY="131.0" prefHeight="443.0" prefWidth="1072.0" />
-            <Label layoutX="30.0" layoutY="590.0" text="Choose Quantity:" />
-            <ComboBox fx:id="comboBoxQuantity" layoutX="159.0" layoutY="586.0" prefWidth="150.0" />
-            <Button fx:id="recordProductionButton" layoutX="334.0" layoutY="582.0" mnemonicParsing="false" onAction="#recordProductionButtonPushed" text="Record Production" />
+            <Label layoutX="28.0" layoutY="111.0" text="Choose Product"/>
+            <ListView fx:id="listView" layoutY="131.0" prefHeight="443.0" prefWidth="1072.0"/>
+            <Label layoutX="30.0" layoutY="590.0" text="Choose Quantity:"/>
+            <ComboBox fx:id="comboBoxQuantity" layoutX="159.0" layoutY="586.0" prefWidth="150.0"/>
+            <Button fx:id="recordProductionButton" layoutX="334.0" layoutY="582.0"
+              mnemonicParsing="false" onAction="#recordProductionButtonPushed"
+              text="Record Production"/>
           </children>
         </AnchorPane>
       </content>
     </Tab>
     <Tab text="Production Log">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c3c3c;" stylesheets="@DashboardStyle.css">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+          style="-fx-background-color: #3c3c3c;" stylesheets="@DashboardStyle.css">
           <children>
-            <TextArea layoutY="41.0" prefHeight="760.0" prefWidth="1080.0" stylesheets="@DashboardStyle.css" />
+            <TextArea fx:id="textArea" layoutY="41.0" prefHeight="760.0" prefWidth="1080.0"
+              stylesheets="@DashboardStyle.css"/>
           </children>
         </AnchorPane>
       </content>

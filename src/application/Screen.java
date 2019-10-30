@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Class used to describe and create new Screen objects.
+ *
+ * @Author: Seth T. Graham
+ */
 public class Screen implements ScreenSpec {
 
   private String resolution;

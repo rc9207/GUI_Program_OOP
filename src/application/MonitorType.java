@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Enum used to abbreviate monitorType field.
+ *
+ * @Author: Seth T. Graham
+ */
 public enum MonitorType {
 
   Liquid_Crystal_Display("LED"), Light_Emitting_Diode("LED");

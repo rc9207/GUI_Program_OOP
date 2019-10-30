@@ -10,6 +10,12 @@ public class ProductionRecord {
   private Date dateProduced;
 
   /**
+   * ProductionRecord constructor with no parameters.
+   */
+  public ProductionRecord() {
+  }
+
+  /**
    * Constructor with 1 parameter.
    *
    * @param productID Desired int value for productID.
@@ -19,7 +25,6 @@ public class ProductionRecord {
     productionNumber = 0;
     serialNumber = "0";
     dateProduced = new Date();
-
   }
 
   /**
@@ -28,10 +33,10 @@ public class ProductionRecord {
    * @param productionNumber Desired int value for productionRecord field.
    * @param productID        Desired int value for productId field.
    * @param serialNumber     Desired String value for serialNumber field.
-   * @param dateProduced     Desired Date value for dateProduced field.
    */
   public ProductionRecord(int productionNumber, int productID, String serialNumber,
       Date dateProduced) {
+
     this.productionNumber = productionNumber;
     this.productID = productID;
     this.serialNumber = serialNumber;
@@ -84,6 +89,29 @@ public class ProductionRecord {
   }
 
   /**
+   * Method to take data from PRODUCT database and convert it into a usable serial number. Also uses
+   * ITEM_NUMBER database to generate a unique serial number for each Type of device.
+   *
+   * @param manufacturer Desired String manufacturer you wish to modify.
+   * @param type         Desired String type you wish to modify.
+   * @return Combine all values to generate unique serialNumber.
+   */
+  public String generateSerialNum(String manufacturer, String type) {
+
+    manufacturer = manufacturer.substring(0, 3);
+    manufacturer = manufacturer.toUpperCase();
+
+    ResourceMethods rm = new ResourceMethods();
+
+    int itemNumber = rm.getItemNumber(type);
+    String padItemNumber = String.format("%05d", itemNumber);
+
+    String serNumber = manufacturer + type + padItemNumber;
+
+    return serNumber;
+  }
+
+  /**
    * Getter for serialNumber field.
    *
    * @return String value of serialNumber field.
@@ -120,8 +148,7 @@ public class ProductionRecord {
     String info;
 
     info = "Prod. Num: " + productionNumber + " Product ID: " + productID + " Serial Num: "
-        + serialNumber
-        + " Date: " + dateProduced;
+        + serialNumber + " Date: " + dateProduced + "\n";
 
     return info;
   }

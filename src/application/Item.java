@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Interface that has use in Product, AudioPlayer, and MoviePlayer.
+ *
+ * @Author: Seth T. Graham
+ */
 public interface Item {
 
   /**

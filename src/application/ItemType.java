@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Enum to represent shortened value for type field.
+ *
+ * @Author: Seth T. Graham
+ */
 public enum ItemType {
 
   AUDIO("AU"), VISUAL("VI"), AUDIO_MOBILE("AM"), VISUAL_MOBILE("VM");

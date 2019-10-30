@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Parent class for MoviePlayers and AudioPlayers.
+ *
+ * @Author: Seth T. Graham
+ */
 public abstract class Product implements Item {
 
   private int id;
@@ -10,7 +15,7 @@ public abstract class Product implements Item {
   /**
    * Constructor for Product with two arguments.
    *
-   * @param name Field is located locally.
+   * @param name         Field is located locally.
    * @param manufacturer Field is located locally.
    */
   public Product(String name, String manufacturer) {
@@ -21,9 +26,9 @@ public abstract class Product implements Item {
   /**
    * Constructor for product with three arguments.
    *
-   * @param name Field is located locally.
+   * @param name         Field is located locally.
    * @param manufacturer Field is located locally.
-   * @param type Field is located locally.
+   * @param type         Field is located locally.
    */
   public Product(String name, String manufacturer, ItemType type) {
     this.name = name;

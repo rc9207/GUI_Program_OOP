@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Interface used to determine specifications of a MonitorType.
+ *
+ * @Author: Seth T. Graham
+ */
 public interface ScreenSpec {
 
   /**

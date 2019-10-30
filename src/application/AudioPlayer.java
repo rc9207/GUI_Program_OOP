@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Class designed to create new AudioPlayers.
+ *
+ * @Author: Seth T. Graham
+ */
 public class AudioPlayer extends Product implements MultiMediaControl {
 
   private String audioSpecification;

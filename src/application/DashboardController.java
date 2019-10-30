@@ -1,12 +1,7 @@
 package application;
 
-/**
- * Methods for Dashboard JavaFX.
- *
- * @author Seth T. Graham
- */
-
 import java.io.IOException;
+import java.sql.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,14 +12,20 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * Methods for Dashboard JavaFX.
+ *
+ * @author Seth T. Graham
+ */
 public class DashboardController {
 
   private ItemType itemType;
-  private AudioPlayer audioPlayer;
-  private MoviePlayer moviePlayer;
+  private ObservableList<ProductTable> productList;
+  private ObservableList<ProductionRecord> prodRecordList;
 
   private ObservableList comboBoxList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6,
       7, 8, 9, 10);
@@ -40,7 +41,7 @@ public class DashboardController {
   @FXML
   private ChoiceBox<ItemType> choiceBoxType;
   @FXML
-  private ComboBox<Integer> comboBoxQuantity;
+  private ComboBox<String> comboBoxQuantity;
   @FXML
   private TableView<ProductTable> tableView;
   @FXML
@@ -53,6 +54,8 @@ public class DashboardController {
   private TableColumn<ProductTable, String> colType;
   @FXML
   private ListView<ProductTable> listView;
+  @FXML
+  private TextArea textArea;
 
   /**
    * Generate data upon loading of Dashboard.fxml
@@ -61,6 +64,9 @@ public class DashboardController {
    */
   @FXML
   private void initialize() throws Exception {
+
+    productList = ResourceMethods.getProducts();
+    prodRecordList = ResourceMethods.getProductionRecords();
 
     choiceBoxType.setItems(FXCollections.observableArrayList(itemType.values()));
 
@@ -73,12 +79,13 @@ public class DashboardController {
     colMan.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
     colType.setCellValueFactory(new PropertyValueFactory<>("type"));
 
-    ObservableList<ProductTable> productList = ResourceMethods.getProducts();
     tableView.setItems(productList);
 
     listView.setItems(productList);
 
-
+    for (ProductionRecord productionRecord : prodRecordList) {
+      textArea.appendText(productionRecord.toString());
+    }
   }
 
   /**
@@ -107,7 +114,31 @@ public class DashboardController {
    * @param event pressed button.
    * @throws IOException Throw exception if needed.
    */
-  public void recordProductionButtonPushed(ActionEvent event) {
-    System.out.println("Record Production button was pushed.");
+  public void recordProductionButtonPushed(ActionEvent event) throws Exception {
+
+    int prodID;
+    String manInfo;
+    String typInfo;
+    String serialNumber;
+
+    prodID = productList.get(listView.getSelectionModel().getSelectedIndex()).getId();
+    manInfo = productList.get(listView.getSelectionModel().getSelectedIndex()).getManufacturer();
+    typInfo = productList.get(listView.getSelectionModel().getSelectedIndex()).getType();
+    String quantity = (String) comboBoxQuantity.getSelectionModel().getSelectedItem();
+    int quantityInt = Integer.parseInt(quantity);
+
+    ProductionRecord proRecord = new ProductionRecord(prodID);
+
+    for (int i = 0; i <= quantityInt; i++) {
+
+      serialNumber = proRecord.generateSerialNum(manInfo, typInfo);
+      Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+
+      ResourceMethods resMeth = new ResourceMethods();
+      resMeth.addProductionRecord(prodID, serialNumber, sqlDate);
+
+      textArea.clear();
+      initialize();
+    }
   }
 }
