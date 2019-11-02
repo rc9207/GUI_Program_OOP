@@ -23,7 +23,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class DashboardController {
 
-  private ItemType itemType;
   private ObservableList<ProductTable> productList;
   private ObservableList<ProductionRecord> prodRecordList;
 
@@ -68,7 +67,7 @@ public class DashboardController {
     productList = ResourceMethods.getProducts();
     prodRecordList = ResourceMethods.getProductionRecords();
 
-    choiceBoxType.setItems(FXCollections.observableArrayList(itemType.values()));
+    choiceBoxType.setItems(FXCollections.observableArrayList(ItemType.values()));
 
     comboBoxQuantity.setItems(comboBoxList);
     comboBoxQuantity.setEditable(true);
@@ -129,7 +128,7 @@ public class DashboardController {
 
     ProductionRecord proRecord = new ProductionRecord(prodID);
 
-    for (int i = 0; i <= quantityInt; i++) {
+    for (int i = 0; i < quantityInt; i++) {
 
       serialNumber = proRecord.generateSerialNum(manInfo, typInfo);
       Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
