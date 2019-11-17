@@ -34,9 +34,15 @@ public class DashboardController {
   @FXML
   private Button recordProductionButton;
   @FXML
+  private Button createUserButton;
+  @FXML
   private TextField productName;
   @FXML
   private TextField manufacturer;
+  @FXML
+  private TextField firstLastName;
+  @FXML
+  private TextField passwordTextField;
   @FXML
   private ChoiceBox<ItemType> choiceBoxType;
   @FXML
@@ -55,6 +61,8 @@ public class DashboardController {
   private ListView<ProductTable> listView;
   @FXML
   private TextArea textArea;
+  @FXML
+  private TextArea newUserDisplay;
 
   /**
    * Generate data upon loading of Dashboard.fxml
@@ -139,5 +147,19 @@ public class DashboardController {
       textArea.clear();
       initialize();
     }
+  }
+
+  /**
+   * Display user entered data into newUserDisplay.
+   *
+   * @param event Button pushed.
+   * @throws Exception Any Exception.
+   */
+  public void createNewUserButtonPushed(ActionEvent event) throws Exception {
+
+    Employee employee = new Employee(firstLastName.getText(), passwordTextField.getText());
+
+    newUserDisplay.appendText(employee.toString());
+    System.out.println(employee.toString());
   }
 }
