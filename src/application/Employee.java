@@ -1,6 +1,7 @@
 package application;
 
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * Employee descriptor class.
@@ -9,10 +10,13 @@ import java.util.regex.Pattern;
  */
 public class Employee {
 
-  String name;
-  String userName;
-  String password;
-  String email;
+  private String name;
+  private String userName;
+  private String password;
+  private String email;
+  private Pattern pattern;
+  private Matcher matcher;
+
 
   /**
    * Constructor to create new employee by utilizing name input.
@@ -24,7 +28,14 @@ public class Employee {
 
     setName(inputName);
     checkName(inputName);
-    isValidPassword(password);
+
+    System.out.println(isValidPassword(password));
+
+    if (isValidPassword(password)) {
+      this.password = password;
+    } else {
+      this.password = "pw";
+    }
   }
 
   /**
@@ -70,7 +81,7 @@ public class Employee {
    */
   private void checkName(String inputName) {
 
-    if (Pattern.matches("[\\S\\s\\S]+", inputName)) {
+    if (Pattern.matches("[\\S]+[\\s]+[\\S]+", inputName)) {
 
       String firstLetter = inputName.substring(0, 1);
       String lastName = inputName.substring(inputName.lastIndexOf(" ") + 1);
@@ -130,15 +141,12 @@ public class Employee {
    *
    * @param password String value of password.
    */
-  public void isValidPassword(String password) {
+  public boolean isValidPassword(String password) {
 
-    if (Pattern.matches("[a-zA-Z\\W]+", password)) {
+    pattern = Pattern.compile("((?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]))");
+    matcher = pattern.matcher(password);
 
-      setPassword(password);
-
-    } else {
-      setPassword("pw");
-    }
+    return matcher.matches();
   }
 
   /**

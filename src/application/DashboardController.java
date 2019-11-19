@@ -159,6 +159,7 @@ public class DashboardController {
 
     Employee employee = new Employee(firstLastName.getText(), passwordTextField.getText());
 
+    newUserDisplay.clear();
     newUserDisplay.appendText(employee.toString());
     System.out.println(employee.toString());
   }
