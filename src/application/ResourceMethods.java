@@ -1,6 +1,15 @@
 
 package application;
 
+import com.sun.xml.internal.stream.writers.UTF8OutputStreamWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -8,8 +17,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sun.text.normalizer.UTF16;
 
 /**
  * Methods for manipulating the Database.
@@ -20,8 +31,57 @@ public class ResourceMethods {
 
   private static final String JDBC_Driver = "org.h2.Driver";
   private static final String DB_URL = "jdbc:h2:./res/database";
-  private static final String user = "";
-  private static final String password = "";
+  private static String user = "";
+  private static String password = "";
+
+  /**
+   * Decode the username and password by reversing the string.
+   *
+   * @param reversedPassword Encoded password provided by separate text file.
+   * @return Decoded result.
+   */
+  private static String decodePassword(String reversedPassword) {
+
+    if (reversedPassword.isEmpty()) {
+      return reversedPassword;
+    }
+
+    return decodePassword(reversedPassword.substring(1)) + reversedPassword.charAt(0);
+
+  }
+
+  /**
+   * Get database password and username from text file.
+   */
+
+  private static void getUserPassword() {
+
+    int counter = 0;
+    String encodedString;
+    String path = "res/Config.txt";
+
+    try {
+      InputStreamReader isReader = new InputStreamReader(new FileInputStream(path), "UTF8");
+      BufferedReader buffReader = new BufferedReader(isReader);
+
+      while ((encodedString = buffReader.readLine()) != null) {
+
+        if (counter == 0) {
+          user = decodePassword(encodedString);
+          counter++;
+        } else if (counter != 0) {
+          password = decodePassword(encodedString);
+        }
+      }
+
+    } catch (FileNotFoundException fe) {
+      System.out.println("Incorrect Username or password.");
+      fe.printStackTrace();
+    } catch (IOException ioe) {
+      System.out.println("Buffered reader failed.");
+      ioe.printStackTrace();
+    }
+  }
 
   /**
    * Method to add products to PRODUCT database.
@@ -33,8 +93,9 @@ public class ResourceMethods {
   public void addProduct(String name, String manufacturer, String type) {
     try {
 
+      getUserPassword();
       Class.forName(JDBC_Driver);
-      Connection connection = DriverManager.getConnection(DB_URL);
+      Connection connection = DriverManager.getConnection(DB_URL, user, password);
 
       if (connection != null) {
         PreparedStatement prStmt = connection.prepareStatement(
@@ -68,8 +129,9 @@ public class ResourceMethods {
     String sql = "SELECT * FROM PRODUCT";
 
     try {
+      getUserPassword();
       Class.forName(JDBC_Driver);
-      Connection connection = DriverManager.getConnection(DB_URL);
+      Connection connection = DriverManager.getConnection(DB_URL, user, password);
 
       if (connection != null) {
         Statement stmt = connection.createStatement();
@@ -133,8 +195,9 @@ public class ResourceMethods {
 
     try {
 
+      getUserPassword();
       Class.forName(JDBC_Driver);
-      Connection connection = DriverManager.getConnection(DB_URL);
+      Connection connection = DriverManager.getConnection(DB_URL, user, password);
 
       if (connection != null) {
 
@@ -237,8 +300,9 @@ public class ResourceMethods {
 
     try {
 
+      getUserPassword();
       Class.forName(JDBC_Driver);
-      Connection connection = DriverManager.getConnection(DB_URL);
+      Connection connection = DriverManager.getConnection(DB_URL, user, password);
 
       if (connection != null) {
         PreparedStatement prStmt = connection.prepareStatement(
@@ -269,9 +333,9 @@ public class ResourceMethods {
   public static ObservableList<ProductionRecord> getProductionRecords() {
 
     try {
-
+      getUserPassword();
       Class.forName(JDBC_Driver);
-      Connection connection = DriverManager.getConnection(DB_URL);
+      Connection connection = DriverManager.getConnection(DB_URL, user, password);
 
       if (connection != null) {
         PreparedStatement prGet = connection.prepareStatement("SELECT * FROM PRODUCTION_RECORD",

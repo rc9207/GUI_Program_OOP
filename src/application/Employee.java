@@ -1,7 +1,6 @@
 package application;
 
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 /**
  * Employee descriptor class.
@@ -14,9 +13,6 @@ public class Employee {
   private String userName;
   private String password;
   private String email;
-  private Pattern pattern;
-  private Matcher matcher;
-
 
   /**
    * Constructor to create new employee by utilizing name input.
@@ -29,11 +25,9 @@ public class Employee {
     setName(inputName);
     checkName(inputName);
 
-    System.out.println(isValidPassword(password));
-
     if (isValidPassword(password)) {
       this.password = password;
-    } else {
+    } else if (!isValidPassword(password)) {
       this.password = "pw";
     }
   }
@@ -143,10 +137,9 @@ public class Employee {
    */
   public boolean isValidPassword(String password) {
 
-    pattern = Pattern.compile("((?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]))");
-    matcher = pattern.matcher(password);
+    String regEx = ("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{0,20}$");
 
-    return matcher.matches();
+    return password.matches(regEx);
   }
 
   /**

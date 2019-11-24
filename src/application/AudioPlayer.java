@@ -25,10 +25,10 @@ public class AudioPlayer extends Product implements MultiMediaControl {
   /**
    * Constructor with four arguments, Uses Product parent.
    *
-   * @param name Field located in Parent.java.
-   * @param manufacturer Field located in Parent.java.
+   * @param name               Field located in Parent.java.
+   * @param manufacturer       Field located in Parent.java.
    * @param audioSpecification Field located locally.
-   * @param mediaType Field located locally.
+   * @param mediaType          Field located locally.
    */
   public AudioPlayer(String name, String manufacturer, String audioSpecification,
       String mediaType) {
